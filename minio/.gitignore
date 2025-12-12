@@ -1,0 +1,8 @@
+# MinIO configuration file
+config/*
+
+# MinIO data directory
+data/*
+
+# MinIO environment variables file
+*.env

@@ -1,0 +1,27 @@
+services:
+
+    minio:
+
+        image: minio/minio:latest
+        container_name: minio
+        restart: unless-stopped
+
+        ports:
+            - "9000:9000"            # S3 API
+            - "9001:9001"            # MinIO Console
+
+        env_file:
+            - ./.env                 # MINIO_ROOT_USER, MINIO_ROOT_PASSWORD
+
+        volumes:
+            - ./data:/data           # Persistent storage for buckets
+            - ./config:/root/.minio  # Persist MinIO config
+
+        command: server /data --console-address ":9001"
+
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_period: 10s
