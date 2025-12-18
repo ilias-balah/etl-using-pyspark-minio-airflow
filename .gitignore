@@ -8,4 +8,5 @@ __pycache__/
 minio/data/
 
 # Airflow logs and database
-airflow/logs
+airflow/logs/
+airflow/config/
