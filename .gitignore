@@ -1,0 +1,11 @@
+# Python cache files
+__pycache__/
+
+# Virtual environment
+.venv/
+
+# Minio data folder
+minio/data/
+
+# Airflow logs and database
+airflow/logs
